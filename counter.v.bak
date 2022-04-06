@@ -1,0 +1,8 @@
+module counter(
+	input CLOCK_50,
+	input reset_n,
+	input oneSec,
+	
+	output [3:0] 
+	
+);
