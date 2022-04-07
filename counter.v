@@ -31,7 +31,7 @@ module counter(
 				sec_l <= 4'd0;
 				sec_h <= sec_h + 4'd1;
 			end
-			else if(sec_l == 4'd9 && sec_h == 4'd5)begin
+			else if(sec_l >= 4'd9 && sec_h >= 4'd5)begin
 				sec_h <= 4'd0;
 				sec_l <= 4'd0;
 			end
@@ -47,14 +47,14 @@ module counter(
 			min_l <= 4'd0;
 			min_h <= 4'd0;
 		end
-		else if((sec_l == 4'd9 && sec_h == 4'd5)||force_min) begin
+		else if((sec_l == 4'd9 && sec_h == 4'd5 && oneSec)||force_min) begin
 		
 			if(min_l < 4'd9) min_l <= min_l + 4'd1;
 			else if(min_l == 4'd9 && min_h < 4'd5)begin
 				min_l <= 4'd0;
 				min_h <= min_h + 4'd1;
 			end
-			else if(min_l == 4'd9 && min_h == 4'd5)begin
+			else if(min_l >= 4'd9 && min_h >= 4'd5)begin
 				min_h <= 4'd0;
 				min_l <= 4'd0;
 			end
@@ -70,16 +70,21 @@ module counter(
 			hr_l <= 4'd0;
 			hr_h <= 4'd0;
 		end
-		else if((min_l == 4'd9 && min_h == 4'd5)||force_hr) begin
+		else if((min_l == 4'd9 && min_h == 4'd5 && oneSec)||force_hr) begin
 		
-			if(hr_l < 4'd9) hr_l <= hr_l + 4'd1;
-			else if(hr_l == 4'd9 && hr_h < 4'd2)begin
+			if(hr_l < 4'd9 && hr_h < 4'd2)begin			//normal add
+				hr_l = hr_l + 4'd1;
+			end
+			else if(hr_l == 4'd9 && hr_h < 4'd2)begin //carry out
 				hr_l <= 4'd0;
 				hr_h <= hr_h + 4'd1;
 			end
-			else if(hr_l == 4'd3 && hr_h == 4'd2)begin
-				hr_h <= 4'd0;
+			else if(hr_l < 4'd3 && hr_h == 4'd2)begin	//add when >20
+				hr_l <= hr_l + 4'd1;
+			end
+			else begin											//>23 <= reset
 				hr_l <= 4'd0;
+				hr_h <= 4'd0;
 			end
 		end
 		else begin

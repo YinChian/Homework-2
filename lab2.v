@@ -14,7 +14,8 @@ module lab2(
 	
 	output [2:0] state,state_next,
 	output [3:0] ntust_state, next_ntust_state,
-	output [3:0] digit_state, next_digit_state
+	output [3:0] digit_state, next_digit_state,
+	output force_sec, force_min, force_hr
 	
 );
 	
@@ -27,7 +28,7 @@ module lab2(
 	);
 	
 	//Debounce for Sec
-	wire force_sec_long,force_sec;
+	wire force_sec_long;
 	debounce d1(
 		.CLOCK_50(CLOCK_50),
 		.reset_n(reset_n),
@@ -42,7 +43,7 @@ module lab2(
 	);
 	
 	//Debounce for Min
-	wire force_min_long,force_min;
+	wire force_min_long;
 	debounce d2(
 		.CLOCK_50(CLOCK_50),
 		.reset_n(reset_n),
@@ -57,7 +58,7 @@ module lab2(
 	);
 	
 	//Debounce for Hour
-	wire force_hr_long,force_hr;
+	wire force_hr_long;
 	debounce d3(
 		.CLOCK_50(CLOCK_50),
 		.reset_n(reset_n),

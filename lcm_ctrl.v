@@ -12,7 +12,7 @@ module lcm_ctrl(
 	
 	output reg [7:0]	LCD_DATA,
 	output reg			LCD_RS,
-	output 			LCD_EN,
+	output reg			LCD_EN,
 	
 	output 			LCD_RW,
 	output 			LCD_ON,
@@ -48,12 +48,17 @@ module lcm_ctrl(
 		if(!reset_n) send_counter <= 12'd0;
 		else if (en)begin
 			if(send_counter == 12'd4095) send_counter <= 12'd0;	//read if end
-			else send_counter <= send_counter + 12'd1;
+			else begin
+				
+				send_counter <= send_counter + 12'd1;
+				if(send_counter > 12'd7 && send_counter < 12'd24) LCD_EN <= 1'b1;
+				else LCD_EN <=1'b0;
+			end
 		end
 		else send_counter <= 12'd0;
 	end
 	
-	assign LCD_EN = send_counter > 12'd7 && send_counter < 12'd24;
+	//assign LCD_EN = send_counter > 12'd7 && send_counter < 12'd24;
 	
 	//End//
 	
@@ -182,7 +187,7 @@ module lcm_ctrl(
 	//Transfer
 	always@(*)begin
 		case(state)
-			start			: 	next_state = (cnt_30m == 21'd1_500_000)?	entry_mode : start;
+			start			: 	next_state = (cnt_30m == 21'd1_5)?	entry_mode : start;	//Modified
 			entry_mode	:	next_state = (send_counter == 12'd4095)?	ntust_clock : entry_mode;
 			ntust_clock	:	next_state = (ntust_state == fin)?	idle : ntust_clock;
 			idle			:	next_state = (change)?	send_data : idle ;
