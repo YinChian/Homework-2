@@ -1,0 +1,164 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dD:/Digital_Logic_Design/Pratice/Homework 2/simulation/modelsim
+vcounter
+Z1 !s110 1649345564
+!i10b 1
+!s100 UIJfnD<ZAo5=c4o;g7GhS3
+IjZm_=z=Pa1LI1fF?g5K=A2
+Z2 VDg1SIo80bB@j0V0VzS_@n1
+R0
+w1649345235
+8D:/Digital_Logic_Design/Pratice/Homework 2/counter.v
+FD:/Digital_Logic_Design/Pratice/Homework 2/counter.v
+L0 1
+Z3 OV;L;10.5b;63
+r1
+!s85 0
+31
+Z4 !s108 1649345563.000000
+!s107 D:/Digital_Logic_Design/Pratice/Homework 2/counter.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+D:/Digital_Logic_Design/Pratice/Homework 2|D:/Digital_Logic_Design/Pratice/Homework 2/counter.v|
+!i113 1
+Z5 o-vlog01compat -work work
+Z6 !s92 -vlog01compat -work work {+incdir+D:/Digital_Logic_Design/Pratice/Homework 2}
+Z7 tCvgOpt 0
+vdebounce
+Z8 !s110 1649345563
+!i10b 1
+!s100 A2RP7<O[[e`hfV]QLAi3a3
+IXfB4iZ<Q6<F]5]H_minbS0
+R2
+R0
+w1649243969
+8D:/Digital_Logic_Design/Pratice/Homework 2/debounce.v
+FD:/Digital_Logic_Design/Pratice/Homework 2/debounce.v
+L0 1
+R3
+r1
+!s85 0
+31
+R4
+!s107 D:/Digital_Logic_Design/Pratice/Homework 2/debounce.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+D:/Digital_Logic_Design/Pratice/Homework 2|D:/Digital_Logic_Design/Pratice/Homework 2/debounce.v|
+!i113 1
+R5
+R6
+R7
+vedge_detect
+R8
+!i10b 1
+!s100 4gcD@dCnd<o99[hE]RmB22
+II?`z_9P5Lm0M3CYgndFP>3
+R2
+R0
+w1647496879
+8D:/Digital_Logic_Design/Pratice/Homework 2/edge_detect.v
+FD:/Digital_Logic_Design/Pratice/Homework 2/edge_detect.v
+L0 2
+R3
+r1
+!s85 0
+31
+R4
+!s107 D:/Digital_Logic_Design/Pratice/Homework 2/edge_detect.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+D:/Digital_Logic_Design/Pratice/Homework 2|D:/Digital_Logic_Design/Pratice/Homework 2/edge_detect.v|
+!i113 1
+R5
+R6
+R7
+vlab2
+R8
+!i10b 1
+!s100 8ZHG=3LQ;m3R>V]ZAY3dS2
+IAW?:BzS?n0_aBVRVYFZdW2
+R2
+R0
+w1649339383
+8D:/Digital_Logic_Design/Pratice/Homework 2/lab2.v
+FD:/Digital_Logic_Design/Pratice/Homework 2/lab2.v
+L0 1
+R3
+r1
+!s85 0
+31
+R4
+!s107 D:/Digital_Logic_Design/Pratice/Homework 2/lab2.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+D:/Digital_Logic_Design/Pratice/Homework 2|D:/Digital_Logic_Design/Pratice/Homework 2/lab2.v|
+!i113 1
+R5
+R6
+R7
+vlab2_tb
+R1
+!i10b 1
+!s100 Va2JQ=:ez`NGeJ3bbZU>E0
+I^QWmZJ6cYeaYC]i]KaZN^2
+R2
+R0
+w1649339320
+8D:/Digital_Logic_Design/Pratice/Homework 2/lab2_tb.v
+FD:/Digital_Logic_Design/Pratice/Homework 2/lab2_tb.v
+L0 3
+R3
+r1
+!s85 0
+31
+Z9 !s108 1649345564.000000
+!s107 D:/Digital_Logic_Design/Pratice/Homework 2/lab2_tb.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+D:/Digital_Logic_Design/Pratice/Homework 2|D:/Digital_Logic_Design/Pratice/Homework 2/lab2_tb.v|
+!i113 1
+R5
+R6
+R7
+vlcm_ctrl
+R1
+!i10b 1
+!s100 RkD`IL8:NdQF11nD8916e3
+IM02<WQ[2F05?^ITUk:`6A2
+R2
+R0
+w1649345552
+8D:/Digital_Logic_Design/Pratice/Homework 2/lcm_ctrl.v
+FD:/Digital_Logic_Design/Pratice/Homework 2/lcm_ctrl.v
+L0 1
+R3
+r1
+!s85 0
+31
+R9
+!s107 D:/Digital_Logic_Design/Pratice/Homework 2/lcm_ctrl.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+D:/Digital_Logic_Design/Pratice/Homework 2|D:/Digital_Logic_Design/Pratice/Homework 2/lcm_ctrl.v|
+!i113 1
+R5
+R6
+R7
+vmod_1sec
+R8
+!i10b 1
+!s100 nZ>zS@UfM?352;<aB[Cka2
+I3eeiOlao7Xdl<6^CQjhF]2
+R2
+R0
+w1648039420
+8D:/Digital_Logic_Design/Pratice/Homework 2/mod_1sec.v
+FD:/Digital_Logic_Design/Pratice/Homework 2/mod_1sec.v
+L0 1
+R3
+r1
+!s85 0
+31
+R4
+!s107 D:/Digital_Logic_Design/Pratice/Homework 2/mod_1sec.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+D:/Digital_Logic_Design/Pratice/Homework 2|D:/Digital_Logic_Design/Pratice/Homework 2/mod_1sec.v|
+!i113 1
+R5
+R6
+R7

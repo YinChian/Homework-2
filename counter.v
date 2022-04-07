@@ -3,7 +3,7 @@ module counter(
 	input reset_n,
 	input oneSec,
 	
-	input froce_sec,
+	input force_sec,
 	input force_min,
 	input force_hr,
 	
@@ -14,9 +14,12 @@ module counter(
 	output reg [3:0] hr_l,
 	output reg [3:0] hr_h,
 	
-);
+	output change
 	
-	always@(posedge CLOCK_50M,negedge reset_n)begin
+);
+	assign change = oneSec | force_sec | force_min | force_hr;
+	
+	always@(posedge CLOCK_50,negedge reset_n)begin
 		if(!reset_n)begin
 			sec_l <= 4'd0;
 			sec_h <= 4'd0;
@@ -33,14 +36,18 @@ module counter(
 				sec_l <= 4'd0;
 			end
 		end
+		else begin
+			sec_h <= sec_h;
+			sec_l <= sec_l;
+		end
 	end
 	
-	always@(posedge CLOCK_50M,negedge reset_n)begin
+	always@(posedge CLOCK_50,negedge reset_n)begin
 		if(!reset_n)begin
 			min_l <= 4'd0;
 			min_h <= 4'd0;
 		end
-		else if((min_l == 4'd9 && min_h == 4'd5)||force_min) begin
+		else if((sec_l == 4'd9 && sec_h == 4'd5)||force_min) begin
 		
 			if(min_l < 4'd9) min_l <= min_l + 4'd1;
 			else if(min_l == 4'd9 && min_h < 4'd5)begin
@@ -52,14 +59,18 @@ module counter(
 				min_l <= 4'd0;
 			end
 		end
+		else begin
+			min_l <= min_l;
+			min_h <= min_h;
+		end
 	end
 	
-	always@(posedge CLOCK_50M,negedge reset_n)begin
+	always@(posedge CLOCK_50,negedge reset_n)begin
 		if(!reset_n)begin
 			hr_l <= 4'd0;
 			hr_h <= 4'd0;
 		end
-		else if((hr_l == 4'd9 && hr_h == 4'd5)||force_hr) begin
+		else if((min_l == 4'd9 && min_h == 4'd5)||force_hr) begin
 		
 			if(hr_l < 4'd9) hr_l <= hr_l + 4'd1;
 			else if(hr_l == 4'd9 && hr_h < 4'd2)begin
@@ -70,6 +81,10 @@ module counter(
 				hr_h <= 4'd0;
 				hr_l <= 4'd0;
 			end
+		end
+		else begin
+			hr_l <= hr_l;
+			hr_h <= hr_h;
 		end
 	end
 	

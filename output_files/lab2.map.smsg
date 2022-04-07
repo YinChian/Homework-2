@@ -1,0 +1,7 @@
+Warning (10268): Verilog HDL information at lcm_ctrl.v(82): always construct contains both blocking and non-blocking assignments File: D:/Digital_Logic_Design/Pratice/Homework 2/lcm_ctrl.v Line: 82
+Info (10281): Verilog HDL Declaration information at lcm_ctrl.v(6): object "sec_l" differs only in case from object "sec_L" in the same scope File: D:/Digital_Logic_Design/Pratice/Homework 2/lcm_ctrl.v Line: 6
+Info (10281): Verilog HDL Declaration information at lcm_ctrl.v(7): object "sec_h" differs only in case from object "sec_H" in the same scope File: D:/Digital_Logic_Design/Pratice/Homework 2/lcm_ctrl.v Line: 7
+Info (10281): Verilog HDL Declaration information at lcm_ctrl.v(8): object "min_l" differs only in case from object "min_L" in the same scope File: D:/Digital_Logic_Design/Pratice/Homework 2/lcm_ctrl.v Line: 8
+Info (10281): Verilog HDL Declaration information at lcm_ctrl.v(9): object "min_h" differs only in case from object "min_H" in the same scope File: D:/Digital_Logic_Design/Pratice/Homework 2/lcm_ctrl.v Line: 9
+Info (10281): Verilog HDL Declaration information at lcm_ctrl.v(10): object "hr_l" differs only in case from object "hr_L" in the same scope File: D:/Digital_Logic_Design/Pratice/Homework 2/lcm_ctrl.v Line: 10
+Info (10281): Verilog HDL Declaration information at lcm_ctrl.v(11): object "hr_h" differs only in case from object "hr_H" in the same scope File: D:/Digital_Logic_Design/Pratice/Homework 2/lcm_ctrl.v Line: 11

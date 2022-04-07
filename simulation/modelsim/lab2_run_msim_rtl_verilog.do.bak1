@@ -1,0 +1,14 @@
+transcript on
+if {[file exists rtl_work]} {
+	vdel -lib rtl_work -all
+}
+vlib rtl_work
+vmap work rtl_work
+
+vlog -vlog01compat -work work +incdir+D:/Digital_Logic_Design/Pratice/Homework\ 2 {D:/Digital_Logic_Design/Pratice/Homework 2/edge_detect.v}
+vlog -vlog01compat -work work +incdir+D:/Digital_Logic_Design/Pratice/Homework\ 2 {D:/Digital_Logic_Design/Pratice/Homework 2/mod_1sec.v}
+vlog -vlog01compat -work work +incdir+D:/Digital_Logic_Design/Pratice/Homework\ 2 {D:/Digital_Logic_Design/Pratice/Homework 2/lab2.v}
+vlog -vlog01compat -work work +incdir+D:/Digital_Logic_Design/Pratice/Homework\ 2 {D:/Digital_Logic_Design/Pratice/Homework 2/debounce.v}
+vlog -vlog01compat -work work +incdir+D:/Digital_Logic_Design/Pratice/Homework\ 2 {D:/Digital_Logic_Design/Pratice/Homework 2/counter.v}
+vlog -vlog01compat -work work +incdir+D:/Digital_Logic_Design/Pratice/Homework\ 2 {D:/Digital_Logic_Design/Pratice/Homework 2/lcm_ctrl.v}
+
