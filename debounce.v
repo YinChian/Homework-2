@@ -15,7 +15,7 @@ module debounce(
 		if(!reset_n) counter <= 20'd0;
 		else begin
 			if(!btn_i) begin
-				if(counter == 20'd1_000)	counter <= 20'd1_000;	//Shorten 1_000_000
+				if(counter == 20'd1_000_000)	counter <= 20'd1_000_000;	//Shorten 1_000_000
 				else counter <= counter + 20'd1;
 			end
 			else begin
@@ -24,6 +24,6 @@ module debounce(
 		end
 	end
 	
-	assign btn_o = (counter == 20'd1_000);								//Shorten 1_000_000
+	assign btn_o = (counter == 20'd1_000_000);								//Shorten 1_000_000
 
 endmodule 

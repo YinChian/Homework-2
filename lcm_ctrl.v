@@ -16,17 +16,13 @@ module lcm_ctrl(
 	
 	output 			LCD_RW,
 	output 			LCD_ON,
-	output 			LCD_BLON,
-	
-	output reg [2:0] state,next_state,
-	output reg [3:0] ntust_state, next_ntust_state,
-	output reg [3:0] digit_state, next_digit_state
+	output 			LCD_BLON
 	
 );
 	
 	//Main function's variables
 	parameter start = 0,entry_mode = 1 ,ntust_clock = 2,idle = 3,send_data = 4;
-	//reg [2:0] state,next_state; //Debug
+	reg [2:0] state,next_state; 
 	
 	//Presets//
 	assign LCD_RW = 1'b0;
@@ -58,14 +54,13 @@ module lcm_ctrl(
 		else send_counter <= 12'd0;
 	end
 	
-	//assign LCD_EN = send_counter > 12'd7 && send_counter < 12'd24;
 	
 	//End//
 	
 	//NTUST State//
 	parameter pre = 0, n = 1, t = 2, u = 3 , s = 4, t_ = 5, sp = 6, c = 7, l = 8, o = 9, c_ = 10, k = 11, fin = 12;
 	
-	//reg [3:0] ntust_state, next_ntust_state;	//state registers
+	reg [3:0] ntust_state, next_ntust_state;	//state registers
 	
 	
 	reg [7:0] ntust_data;	//send back to main state machine
@@ -111,7 +106,7 @@ module lcm_ctrl(
 	
 	//Digit Send//
 	parameter set_address = 0, sec_L = 8, sec_H = 7, dotdot_L = 6, min_L = 5, min_H = 4, dotdot_H = 3, hr_L = 2, hr_H = 1, fin_send = 9;
-	//reg [3:0] digit_state, next_digit_state; 
+	reg [3:0] digit_state, next_digit_state; 
 	reg [7:0] digit_send;
 	wire digit_rs;
 	always@(posedge clk,negedge reset_n)begin
@@ -187,7 +182,7 @@ module lcm_ctrl(
 	//Transfer
 	always@(*)begin
 		case(state)
-			start			: 	next_state = (cnt_30m == 21'd1_5)?	entry_mode : start;	//Modified
+			start			: 	next_state = (cnt_30m == 21'd1_500_000)?	entry_mode : start;	//Modified
 			entry_mode	:	next_state = (send_counter == 12'd4095)?	ntust_clock : entry_mode;
 			ntust_clock	:	next_state = (ntust_state == fin)?	idle : ntust_clock;
 			idle			:	next_state = (change)?	send_data : idle ;

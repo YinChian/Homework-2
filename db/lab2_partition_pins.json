@@ -44,106 +44,6 @@
 					"strict" : false
 				},
 				{
-					"name" : "state[0]",
-					"strict" : false
-				},
-				{
-					"name" : "state[1]",
-					"strict" : false
-				},
-				{
-					"name" : "state[2]",
-					"strict" : false
-				},
-				{
-					"name" : "state_next[0]",
-					"strict" : false
-				},
-				{
-					"name" : "state_next[1]",
-					"strict" : false
-				},
-				{
-					"name" : "state_next[2]",
-					"strict" : false
-				},
-				{
-					"name" : "ntust_state[0]",
-					"strict" : false
-				},
-				{
-					"name" : "ntust_state[1]",
-					"strict" : false
-				},
-				{
-					"name" : "ntust_state[2]",
-					"strict" : false
-				},
-				{
-					"name" : "ntust_state[3]",
-					"strict" : false
-				},
-				{
-					"name" : "next_ntust_state[0]",
-					"strict" : false
-				},
-				{
-					"name" : "next_ntust_state[1]",
-					"strict" : false
-				},
-				{
-					"name" : "next_ntust_state[2]",
-					"strict" : false
-				},
-				{
-					"name" : "next_ntust_state[3]",
-					"strict" : false
-				},
-				{
-					"name" : "digit_state[0]",
-					"strict" : false
-				},
-				{
-					"name" : "digit_state[1]",
-					"strict" : false
-				},
-				{
-					"name" : "digit_state[2]",
-					"strict" : false
-				},
-				{
-					"name" : "digit_state[3]",
-					"strict" : false
-				},
-				{
-					"name" : "next_digit_state[0]",
-					"strict" : false
-				},
-				{
-					"name" : "next_digit_state[1]",
-					"strict" : false
-				},
-				{
-					"name" : "next_digit_state[2]",
-					"strict" : false
-				},
-				{
-					"name" : "next_digit_state[3]",
-					"strict" : false
-				},
-				{
-					"name" : "force_sec",
-					"strict" : false
-				},
-				{
-					"name" : "force_min",
-					"strict" : false
-				},
-				{
-					"name" : "force_hr",
-					"strict" : false
-				},
-				{
 					"name" : "CLOCK_50",
 					"strict" : false
 				},
@@ -152,11 +52,11 @@
 					"strict" : false
 				},
 				{
-					"name" : "KEY[0]",
+					"name" : "KEY[1]",
 					"strict" : false
 				},
 				{
-					"name" : "KEY[1]",
+					"name" : "KEY[0]",
 					"strict" : false
 				},
 				{

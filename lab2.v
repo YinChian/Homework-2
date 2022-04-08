@@ -10,16 +10,11 @@ module lab2(
 	output			LCD_RW,
 	output			LCD_RS,
 	output 			LCD_ON,
-	output 			LCD_BLON,
-	
-	output [2:0] state,state_next,
-	output [3:0] ntust_state, next_ntust_state,
-	output [3:0] digit_state, next_digit_state,
-	output force_sec, force_min, force_hr
+	output 			LCD_BLON
 	
 );
 	
-	wire oneSec;
+	wire oneSec,force_sec,force_min,force_hr;
 	wire reset_n = KEY[3];
 	mod_1sec u1(
 		.clk(CLOCK_50),
@@ -121,17 +116,7 @@ module lab2(
 		//static
 		.LCD_RW(LCD_RW),
 		.LCD_ON(LCD_ON),
-		.LCD_BLON(LCD_BLON),
-		
-		//Debug
-		
-		.state(state),
-		.next_state(state_next),
-		.ntust_state(ntust_state),
-		.next_ntust_state(next_ntust_state),
-		.digit_state(digit_state),
-		.next_digit_state(next_digit_state)
-			
+		.LCD_BLON(LCD_BLON)
 	);
 	
 
