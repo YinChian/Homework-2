@@ -18,6 +18,8 @@ wire [2:0] state,state_next;
 wire [3:0] ntust_state, next_ntust_state;
 wire [3:0] digit_state, next_digit_state;
 wire force_sec, force_min, force_hr;
+wire force_sec_n, force_min_n, force_hr_n;
+wire counter_state;
 
 lab2 u1(
                 //////// CLOCK //////////
@@ -40,7 +42,13 @@ lab2 u1(
 					 
 					 .force_sec(force_sec),
 					 .force_min(force_min),
-					 .force_hr(force_hr)
+					 .force_hr(force_hr),
+					 
+					 .force_sec_n(force_sec_n),
+					 .force_min_n(force_min_n),
+					 .force_hr_n(force_hr_n),
+					 
+					 .counter_state(counter_state)
         );  
 
 always
@@ -58,113 +66,22 @@ initial
 
   
   #30 key[3] = 1;  // reset_n  
+  #30_000_000
   
   #2_000_00
   key[2] = 0;     // key0 press
   #12_000_00
   key[2] = 1;     // key0 release
-  
+
   #2_000_00
   key[2] = 0;     // key0 press
-  #12_000_00
-  key[2] = 1;     // key0 release
-  #2_000_00
-  key[2] = 0;     // key0 press
-  #12_000_00
-  key[2] = 1;     // key0 release
-  #2_000_00
-  key[2] = 0;     // key0 press
-  #12_000_00
-  key[2] = 1;     // key0 release
-  #2_000_00
-  key[2] = 0;     // key0 press
-  #12_000_00
-  key[2] = 1;     // key0 release
-  #2_000_00
-  key[2] = 0;     // key0 press
-  #12_000_00
-  key[2] = 1;     // key0 release
-  #2_000_00
-  key[2] = 0;     // key0 press
-  #12_000_00
-  key[2] = 1;     // key0 release
-  #2_000_00
-  key[2] = 0;     // key0 press
-  #12_000_00
-  key[2] = 1;     // key0 release
-  #2_000_00
-  key[2] = 0;     // key0 press
-  #12_000_00
-  key[2] = 1;     // key0 release
-  #2_000_00
-  key[2] = 0;     // key0 press
-  #12_000_00
-  key[2] = 1;     // key0 release
-  #2_000_00
-  key[2] = 0;     // key0 press
-  #12_000_00
-  key[2] = 1;     // key0 release
-  #2_000_00
-  key[2] = 0;     // key0 press
-  #12_000_00
-  key[2] = 1;     // key0 release
-  #2_000_00
-  key[2] = 0;     // key0 press
-  #12_000_00
-  key[2] = 1;     // key0 release
-  #2_000_00
-  key[2] = 0;     // key0 press
-  #12_000_00
-  key[2] = 1;     // key0 release
-  #2_000_00
-  key[2] = 0;     // key0 press
-  #12_000_00
-  key[2] = 1;     // key0 release
-  #2_000_00
-  key[2] = 0;     // key0 press
-  #12_000_00
-  key[2] = 1;     // key0 release
-  #2_000_00
-  key[2] = 0;     // key0 press
-  #12_000_00
-  key[2] = 1;     // key0 release
-  #2_000_00
-  key[2] = 0;     // key0 press
-  #12_000_00
-  key[2] = 1;     // key0 release
-  #2_000_00
-  key[2] = 0;     // key0 press
-  #12_000_00
-  key[2] = 1;     // key0 release
-  #2_000_00
-  key[2] = 0;     // key0 press
-  #12_000_00
-  key[2] = 1;     // key0 release
-  #2_000_00
-  key[2] = 0;     // key0 press
-  #12_000_00
-  key[2] = 1;     // key0 release
-  #2_000_00
-  key[2] = 0;     // key0 press
-  #12_000_00
-  key[2] = 1;     // key0 release
-  #2_000_00
-  key[2] = 0;     // key0 press
-  #12_000_00
-  key[2] = 1;     // key0 release
-  #2_000_00
-  key[2] = 0;     // key0 press
-  #12_000_00
-  key[2] = 1;     // key0 release
-  #2_000_00
-  key[2] = 0;     // key0 press
-  #12_000_00
+  #50_000_00
   key[2] = 1;     // key0 release
   
-  //#400_000_000; // simualtion 400ms
-  //$stop;
+  #400_000_000; // simualtion 400ms
+  $stop;
   end
-  /*
+  
 initial
   begin
   $monitor("time = %3d,key[0]= %d,key[1]= %d,key[2]= %d,key[3]= %d",$time,key[0],key[1],key[2],key[3]);
@@ -188,6 +105,6 @@ always@(negedge lcd_en)
 	  $display("time = %3d,write_instruction lcd_data = %X,lcd_on = %d",$time, lcd_data, lcd_on);
 	end
   end
-  */
+  
   
 endmodule

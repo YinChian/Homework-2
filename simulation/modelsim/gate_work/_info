@@ -9,21 +9,21 @@ z2
 cModel Technology
 Z0 dD:/Digital_Logic_Design/Pratice/Homework 2/simulation/modelsim
 vhard_block
-Z1 !s110 1649351801
+Z1 !s110 1649573345
 !i10b 1
-!s100 4[L;6=7=BKP1_]7cTSZ431
-IJZ[mH@`Cem8M=JWZ<OlcS0
+!s100 T>kD8>?5CPT@jWIJTHGCL3
+I4N^Qd8m:AW^oPY:dNnDQI1
 Z2 VDg1SIo80bB@j0V0VzS_@n1
 R0
-Z3 w1649351793
+Z3 w1649573323
 Z4 8lab2.vo
 Z5 Flab2.vo
-L0 10140
+L0 10488
 Z6 OV;L;10.5b;63
 r1
 !s85 0
 31
-Z7 !s108 1649351801.000000
+Z7 !s108 1649573345.000000
 Z8 !s107 lab2.vo|
 Z9 !s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+.|lab2.vo|
 !i113 1
@@ -33,8 +33,8 @@ Z12 tCvgOpt 0
 vlab2
 R1
 !i10b 1
-!s100 >BUMD0SM3?1Q6gWNNbj773
-Ib`IQ_Pd?hKRNNAgDcC=AE0
+!s100 gKmN^SdP>o_[=NaCz`UAP2
+IL`5=hj;dhT4g9NC;0Gf9J0
 R2
 R0
 R3
@@ -53,13 +53,13 @@ R10
 R11
 R12
 vlab2_tb
-R1
+!s110 1649573346
 !i10b 1
-!s100 ;YDGzkOgDA=k:n=2a1U8g3
-I;X0FYi;XdkKeRIMFTU:5I1
+!s100 ^47P^SbY`TMEN50UomX9c3
+I;Q4]=?L50SIbkBfPn[;;M1
 R2
 R0
-w1649350648
+w1649569708
 8D:/Digital_Logic_Design/Pratice/Homework 2/lab2_tb.v
 FD:/Digital_Logic_Design/Pratice/Homework 2/lab2_tb.v
 L0 3
@@ -67,7 +67,7 @@ R6
 r1
 !s85 0
 31
-R7
+!s108 1649573346.000000
 !s107 D:/Digital_Logic_Design/Pratice/Homework 2/lab2_tb.v|
 !s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+D:/Digital_Logic_Design/Pratice/Homework 2|D:/Digital_Logic_Design/Pratice/Homework 2/lab2_tb.v|
 !i113 1

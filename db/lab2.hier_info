@@ -42,6 +42,10 @@ next_digit_state[3] << lcm_ctrl:ctrl.next_digit_state
 force_sec << force_sec.DB_MAX_OUTPUT_PORT_TYPE
 force_min << force_min.DB_MAX_OUTPUT_PORT_TYPE
 force_hr << force_hr.DB_MAX_OUTPUT_PORT_TYPE
+force_sec_n << force_sec_n.DB_MAX_OUTPUT_PORT_TYPE
+force_min_n << force_min_n.DB_MAX_OUTPUT_PORT_TYPE
+force_hr_n << force_hr_n.DB_MAX_OUTPUT_PORT_TYPE
+counter_state << counter:c.state
 
 
 |lab2|mod_1sec:u1
@@ -347,6 +351,7 @@ CLOCK_50 => sec_l[0]~reg0.CLK
 CLOCK_50 => sec_l[1]~reg0.CLK
 CLOCK_50 => sec_l[2]~reg0.CLK
 CLOCK_50 => sec_l[3]~reg0.CLK
+CLOCK_50 => state~reg0.CLK
 reset_n => sec_h[0]~reg0.ACLR
 reset_n => sec_h[1]~reg0.ACLR
 reset_n => sec_h[2]~reg0.ACLR
@@ -371,14 +376,23 @@ reset_n => hr_l[0]~reg0.ACLR
 reset_n => hr_l[1]~reg0.ACLR
 reset_n => hr_l[2]~reg0.ACLR
 reset_n => hr_l[3]~reg0.ACLR
-oneSec => always0.IN0
-oneSec => always1.IN1
+reset_n => state~reg0.ACLR
+oneSec => change.IN0
 oneSec => always2.IN1
-force_sec => always0.IN1
+oneSec => always3.IN1
+oneSec => always4.IN1
+force_sec => change.IN1
+force_sec => next_state.IN0
+force_sec => always2.IN1
+force_sec_n => next_state.IN0
 force_min => change.IN1
-force_min => always1.IN1
+force_min => next_state.IN1
+force_min => always3.IN1
+force_min_n => next_state.IN1
 force_hr => change.IN1
-force_hr => always2.IN1
+force_hr => next_state.IN1
+force_hr => always4.IN1
+force_hr_n => next_state.IN1
 sec_l[0] <= sec_l[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
 sec_l[1] <= sec_l[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
 sec_l[2] <= sec_l[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
@@ -403,6 +417,7 @@ hr_h[0] <= hr_h[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
 hr_h[1] <= hr_h[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
 hr_h[2] <= hr_h[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
 hr_h[3] <= hr_h[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+state <= state~reg0.DB_MAX_OUTPUT_PORT_TYPE
 change <= change.DB_MAX_OUTPUT_PORT_TYPE
 
 

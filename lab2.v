@@ -15,7 +15,9 @@ module lab2(
 	output [2:0] state,state_next,
 	output [3:0] ntust_state, next_ntust_state,
 	output [3:0] digit_state, next_digit_state,
-	output force_sec, force_min, force_hr
+	output force_sec, force_min, force_hr,
+	output force_sec_n, force_min_n, force_hr_n,
+	output counter_state
 	
 );
 	
@@ -39,7 +41,8 @@ module lab2(
 		.clk(CLOCK_50),
 		.rst_n(reset_n),
 		.data_in(force_sec_long),
-		.pos_edge(force_sec)
+		.pos_edge(force_sec),
+		.neg_edge(force_sec_n)
 	);
 	
 	//Debounce for Min
@@ -54,7 +57,8 @@ module lab2(
 		.clk(CLOCK_50),
 		.rst_n(reset_n),
 		.data_in(force_min_long),
-		.pos_edge(force_min)
+		.pos_edge(force_min),
+		.neg_edge(force_min_n)
 	);
 	
 	//Debounce for Hour
@@ -69,7 +73,8 @@ module lab2(
 		.clk(CLOCK_50),
 		.rst_n(reset_n),
 		.data_in(force_hr_long),
-		.pos_edge(force_hr)
+		.pos_edge(force_hr),
+		.neg_edge(force_hr_n)
 	);
 	
 	//the counter
@@ -84,6 +89,10 @@ module lab2(
 		.force_min(force_min),
 		.force_hr(force_hr),
 		
+		.force_sec_n(force_sec_n),
+		.force_min_n(force_min_n),
+		.force_hr_n(force_hr_n),
+		
 		//time
 		.sec_l(sec_l),
 		.sec_h(sec_h),
@@ -92,7 +101,11 @@ module lab2(
 		.hr_l(hr_l),
 		.hr_h(hr_h),
 		
-		.change(change)
+		.change(change),
+		
+		//Debug
+		.state(counter_state)
+		
 	);
 	
 	

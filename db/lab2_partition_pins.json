@@ -144,6 +144,22 @@
 					"strict" : false
 				},
 				{
+					"name" : "force_sec_n",
+					"strict" : false
+				},
+				{
+					"name" : "force_min_n",
+					"strict" : false
+				},
+				{
+					"name" : "force_hr_n",
+					"strict" : false
+				},
+				{
+					"name" : "counter_state",
+					"strict" : false
+				},
+				{
 					"name" : "CLOCK_50",
 					"strict" : false
 				},
@@ -152,15 +168,15 @@
 					"strict" : false
 				},
 				{
+					"name" : "KEY[2]",
+					"strict" : false
+				},
+				{
 					"name" : "KEY[0]",
 					"strict" : false
 				},
 				{
 					"name" : "KEY[1]",
-					"strict" : false
-				},
-				{
-					"name" : "KEY[2]",
 					"strict" : false
 				}
 			]

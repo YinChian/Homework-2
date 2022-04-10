@@ -49,7 +49,6 @@ module lcm_ctrl(
 		else if (en)begin
 			if(send_counter == 12'd4095) send_counter <= 12'd0;	//read if end
 			else begin
-				
 				send_counter <= send_counter + 12'd1;
 				if(send_counter > 12'd7 && send_counter < 12'd24) LCD_EN <= 1'b1;
 				else LCD_EN <=1'b0;
@@ -116,35 +115,33 @@ module lcm_ctrl(
 	wire digit_rs;
 	always@(posedge clk,negedge reset_n)begin
 		if(!reset_n) digit_state <= 4'd0;
-		else if(state == send_data) digit_state <= next_digit_state;
+		else if(state == send_data && (send_counter == 12'd4095||send_counter == 12'd0)) digit_state <= next_digit_state;
 		else digit_state <= digit_state;
 	end
 	
 	//Transfer
 	always@(*)begin
-		
 		case(digit_state)
 		
-			set_address:	next_digit_state = (send_counter == 12'd4095)?hr_H:set_address;
+			set_address:	next_digit_state = (send_counter == 12'd4095) ? hr_H:			set_address;
 			
-			hr_H:		next_digit_state = (send_counter == 12'd4095)?hr_L:hr_H;
-			hr_L:		next_digit_state = (send_counter == 12'd4095)?dotdot_H:hr_L;
+			hr_H:				next_digit_state = (send_counter == 12'd4095) ? hr_L:			hr_H;
+			hr_L:				next_digit_state = (send_counter == 12'd4095) ? dotdot_H:	hr_L;
 			
-			dotdot_H:next_digit_state = (send_counter == 12'd4095)?min_H:dotdot_H;
+			dotdot_H:		next_digit_state = (send_counter == 12'd4095) ? min_H:		dotdot_H;
 			
-			min_H:	next_digit_state = (send_counter == 12'd4095)?min_L:min_H;
-			min_L:	next_digit_state = (send_counter == 12'd4095)?dotdot_L:min_L;
-			
-			dotdot_L:next_digit_state = (send_counter == 12'd4095)?sec_H:dotdot_L;
-			
-			sec_H:	next_digit_state = (send_counter == 12'd4095)?sec_L:sec_H;
-			sec_L:	next_digit_state = (send_counter == 12'd4095)?fin_send:sec_L;
-			
-			fin_send:next_digit_state = set_address;
-			
-			default:	next_digit_state = set_address;
-		endcase
+			min_H:			next_digit_state = (send_counter == 12'd4095) ? min_L:		min_H;
+			min_L:			next_digit_state = (send_counter == 12'd4095) ? dotdot_L:	min_L;
 		
+			dotdot_L:		next_digit_state = (send_counter == 12'd4095) ? sec_H:		dotdot_L;
+			
+			sec_H:			next_digit_state = (send_counter == 12'd4095) ? sec_L:		sec_H;
+			sec_L:			next_digit_state = (send_counter == 12'd4095) ? fin_send:	sec_L;
+			
+			fin_send:		next_digit_state = set_address;
+			
+			default:			next_digit_state = set_address;
+		endcase
 	end
 	
 	//Function
