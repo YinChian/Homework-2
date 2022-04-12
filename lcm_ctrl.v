@@ -26,6 +26,7 @@ module lcm_ctrl(
 	
 	//Main function's variables
 	parameter start = 0,entry_mode = 1 ,ntust_clock = 2,idle = 3,send_data = 4;
+	parameter function_set = 5, display_off = 6, display_clear = 7;
 	//reg [2:0] state,next_state; //Debug
 	
 	//Presets//
@@ -149,7 +150,7 @@ module lcm_ctrl(
 		if(!reset_n)  digit_send <= 8'h0;
 		else begin
 			case(digit_state)
-				set_address:digit_send <= 8'h40;
+				set_address:digit_send <= 8'd1100_0000;
 				
 				hr_H:		digit_send <= hr_h+8'h30;
 				hr_L:		digit_send <= hr_l+8'h30;
@@ -184,12 +185,16 @@ module lcm_ctrl(
 	//Transfer
 	always@(*)begin
 		case(state)
-			start			: 	next_state = (cnt_30m == 21'd1_5)?	entry_mode : start;	//Modified
-			entry_mode	:	next_state = (send_counter == 12'd4095)?	ntust_clock : entry_mode;
-			ntust_clock	:	next_state = (ntust_state == fin)?	idle : ntust_clock;
-			idle			:	next_state = (change)?	send_data : idle ;
-			send_data	:	next_state = (digit_state == fin_send)? idle : send_data;	
-			default		:	next_state = start;
+			start				: 	next_state = (cnt_30m == 21'd1_50)?			function_set 		: start;	//Modified
+			function_set	:	next_state = (send_counter == 12'd4095)? 	display_off 	: function_set;
+			display_off		:	next_state = (send_counter == 12'd4095)? 	display_clear 	: display_off;	
+			display_clear	:	next_state = (send_counter == 12'd4095)? 	entry_mode 		: display_clear;
+			entry_mode		:	next_state = (send_counter == 12'd4095)? 	ntust_clock 	: entry_mode;
+			ntust_clock		:	next_state = (ntust_state == fin)? 			idle 				: ntust_clock;
+			idle				:	next_state = (change)?							send_data 		: idle ;
+			send_data		:	next_state = (digit_state == fin_send)? 	idle 				: send_data;	
+			
+			default			:	next_state = start;
 		endcase
 	end
 	
@@ -198,46 +203,67 @@ module lcm_ctrl(
 		case(state)
 		
 			start			:
-			begin
-				en = 1'b0;
-				LCD_DATA = 8'd0;
-				LCD_RS = 1'b0;
-			end
+								begin
+									en = 1'b0;
+									LCD_DATA = 8'd0;
+									LCD_RS = 1'b0;
+								end
+			
+			function_set:	
+								begin
+									en = 1'b1;
+									LCD_DATA = 8'b0011_1000;
+									LCD_RS = 1'b0;
+								end
+								
+			display_off	:	
+								begin
+									en = 1'b1;
+									LCD_DATA = 8'b0000_1000;
+									LCD_RS = 1'b0;
+								end
+								
+			display_clear:	
+								begin
+									en = 1'b1;
+									LCD_DATA = 8'b0000_0001;
+									LCD_RS = 1'b0;
+								end
 			
 			entry_mode	:
-			begin
-				en = 1'b1;
-				LCD_DATA = 8'h06;
-				LCD_RS = 1'b0;
-			end
+								begin
+									en = 1'b1;
+									LCD_DATA = 8'b0000_0110;
+									LCD_RS = 1'b0;
+								end
 			
 			ntust_clock	:	
-			begin
-				en = 1'b1;
-				LCD_DATA = ntust_data;
-				LCD_RS = ntust_rs;
-			end
+								begin
+									en = 1'b1;
+									LCD_DATA = ntust_data;
+									LCD_RS = ntust_rs;
+								end
 			
 			idle			:	//Wait for input
-			begin
-				en = 1'b0;
-				LCD_DATA = 8'd0;
-				LCD_RS = 1'b0;
-			end
+								begin
+									en = 1'b0;
+									LCD_DATA = 8'd0;
+									LCD_RS = 1'b0;
+								end
 			
 			send_data	:	
-			begin
-				en = 1'b1;
-				LCD_DATA = digit_send;
-				LCD_RS = digit_rs;
-			end
+								begin
+									en = 1'b1;
+									LCD_DATA = digit_send;
+									LCD_RS = digit_rs;
+								end
 			
-			default:
-			begin
-				en = 1'b0;
-				LCD_DATA = 8'd0;
-				LCD_RS = 1'b0;
-			end
+			default		:
+								begin
+									en = 1'b0;
+									LCD_DATA = 8'd0;
+									LCD_RS = 1'b0;
+								end
 		endcase
 	end
 	
