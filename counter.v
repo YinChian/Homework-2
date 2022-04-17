@@ -19,17 +19,14 @@ module counter(
 	output reg [3:0] hr_l,
 	output reg [3:0] hr_h,
 	
-	output reg state,
-	
 	output change
 	
 );
 	assign change = oneSec | force_sec | force_min | force_hr;
 	
 	
-	parameter run = 0, stop = 1;
-	//reg state, next_state;
-	reg next_state;
+	parameter run = 1'b0, stop = 1'b1;
+	reg state, next_state;
 	
 	always@(posedge CLOCK_50,negedge reset_n)begin
 		if(!reset_n) state <= 1'b0;

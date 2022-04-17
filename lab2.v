@@ -10,14 +10,7 @@ module lab2(
 	output			LCD_RW,
 	output			LCD_RS,
 	output 			LCD_ON,
-	output 			LCD_BLON,
-	
-	output [2:0] state,state_next,
-	output [3:0] ntust_state, next_ntust_state,
-	output [3:0] digit_state, next_digit_state,
-	output force_sec, force_min, force_hr,
-	output force_sec_n, force_min_n, force_hr_n,
-	output counter_state
+	output 			LCD_BLON
 	
 );
 	
@@ -30,7 +23,7 @@ module lab2(
 	);
 	
 	//Debounce for Sec
-	wire force_sec_long;
+	wire force_sec_long,force_sec,force_sec_n;
 	debounce d1(
 		.CLOCK_50(CLOCK_50),
 		.reset_n(reset_n),
@@ -46,7 +39,7 @@ module lab2(
 	);
 	
 	//Debounce for Min
-	wire force_min_long;
+	wire force_min_long,force_min,force_min_n;
 	debounce d2(
 		.CLOCK_50(CLOCK_50),
 		.reset_n(reset_n),
@@ -62,7 +55,7 @@ module lab2(
 	);
 	
 	//Debounce for Hour
-	wire force_hr_long;
+	wire force_hr_long,force_hr,force_hr_n;
 	debounce d3(
 		.CLOCK_50(CLOCK_50),
 		.reset_n(reset_n),
@@ -101,10 +94,7 @@ module lab2(
 		.hr_l(hr_l),
 		.hr_h(hr_h),
 		
-		.change(change),
-		
-		//Debug
-		.state(counter_state)
+		.change(change)
 		
 	);
 	
@@ -134,16 +124,7 @@ module lab2(
 		//static
 		.LCD_RW(LCD_RW),
 		.LCD_ON(LCD_ON),
-		.LCD_BLON(LCD_BLON),
-		
-		//Debug
-		
-		.state(state),
-		.next_state(state_next),
-		.ntust_state(ntust_state),
-		.next_ntust_state(next_ntust_state),
-		.digit_state(digit_state),
-		.next_digit_state(next_digit_state)
+		.LCD_BLON(LCD_BLON)
 			
 	);
 	

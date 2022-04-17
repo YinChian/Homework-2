@@ -14,12 +14,6 @@ wire lcd_rs;
 wire lcd_on;
 wire lcd_blon;
 
-wire [2:0] state,state_next;
-wire [3:0] ntust_state, next_ntust_state;
-wire [3:0] digit_state, next_digit_state;
-wire force_sec, force_min, force_hr;
-wire force_sec_n, force_min_n, force_hr_n;
-wire counter_state;
 
 lab2 u1(
                 //////// CLOCK //////////
@@ -31,24 +25,7 @@ lab2 u1(
                 .LCD_RW(lcd_rw),
                 .LCD_RS(lcd_rs),
                 .LCD_ON(lcd_on),
-                .LCD_BLON(lcd_blon),
-                //////////////////////       
-					 .state(state),
-					 .state_next(state_next),
-					 .ntust_state(ntust_state),
-					 .next_ntust_state(next_ntust_state),
-					 .digit_state(digit_state),
-					 .next_digit_state(next_digit_state),
-					 
-					 .force_sec(force_sec),
-					 .force_min(force_min),
-					 .force_hr(force_hr),
-					 
-					 .force_sec_n(force_sec_n),
-					 .force_min_n(force_min_n),
-					 .force_hr_n(force_hr_n),
-					 
-					 .counter_state(counter_state)
+                .LCD_BLON(lcd_blon)
         );  
 
 always

@@ -1,0 +1,24 @@
+
+State Machine - |lab2|lcm_ctrl:ctrl|state
+Name state.display_clear state.display_off state.function_set state.send_data state.idle state.ntust_clock state.entry_mode state.000 
+state.000 0 0 0 0 0 0 0 0 
+state.entry_mode 0 0 0 0 0 0 1 1 
+state.ntust_clock 0 0 0 0 0 1 0 1 
+state.idle 0 0 0 0 1 0 0 1 
+state.send_data 0 0 0 1 0 0 0 1 
+state.function_set 0 0 1 0 0 0 0 1 
+state.display_off 0 1 0 0 0 0 0 1 
+state.display_clear 1 0 0 0 0 0 0 1 
+
+State Machine - |lab2|lcm_ctrl:ctrl|digit_state
+Name digit_state.fin_send digit_state.sec_L digit_state.sec_H digit_state.dotdot_L digit_state.min_L digit_state.min_H digit_state.dotdot_H digit_state.hr_L digit_state.hr_H digit_state.0000 
+digit_state.0000 0 0 0 0 0 0 0 0 0 0 
+digit_state.hr_H 0 0 0 0 0 0 0 0 1 1 
+digit_state.hr_L 0 0 0 0 0 0 0 1 0 1 
+digit_state.dotdot_H 0 0 0 0 0 0 1 0 0 1 
+digit_state.min_H 0 0 0 0 0 1 0 0 0 1 
+digit_state.min_L 0 0 0 0 1 0 0 0 0 1 
+digit_state.dotdot_L 0 0 0 1 0 0 0 0 0 1 
+digit_state.sec_H 0 0 1 0 0 0 0 0 0 1 
+digit_state.sec_L 0 1 0 0 0 0 0 0 0 1 
+digit_state.fin_send 1 0 0 0 0 0 0 0 0 1 

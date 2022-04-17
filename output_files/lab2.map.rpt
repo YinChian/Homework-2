@@ -1,5 +1,5 @@
 Analysis & Synthesis report for lab2
-Wed Apr 13 00:27:12 2022
+Wed Apr 13 02:02:29 2022
 Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 
 
@@ -13,15 +13,17 @@ Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
   5. Analysis & Synthesis Source Files Read
   6. Analysis & Synthesis Resource Usage Summary
   7. Analysis & Synthesis Resource Utilization by Entity
-  8. Registers Removed During Synthesis
-  9. General Register Statistics
- 10. Multiplexer Restructuring Statistics (Restructuring Performed)
- 11. Parameter Settings for User Entity Instance: counter:c
- 12. Parameter Settings for User Entity Instance: lcm_ctrl:ctrl
- 13. Post-Synthesis Netlist Statistics for Top Partition
- 14. Elapsed Time Per Partition
- 15. Analysis & Synthesis Messages
- 16. Analysis & Synthesis Suppressed Messages
+  8. State Machine - |lab2|lcm_ctrl:ctrl|state
+  9. State Machine - |lab2|lcm_ctrl:ctrl|digit_state
+ 10. Registers Removed During Synthesis
+ 11. General Register Statistics
+ 12. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 13. Parameter Settings for User Entity Instance: counter:c
+ 14. Parameter Settings for User Entity Instance: lcm_ctrl:ctrl
+ 15. Post-Synthesis Netlist Statistics for Top Partition
+ 16. Elapsed Time Per Partition
+ 17. Analysis & Synthesis Messages
+ 18. Analysis & Synthesis Suppressed Messages
 
 
 
@@ -47,16 +49,16 @@ refer to the applicable agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +------------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Wed Apr 13 00:27:12 2022       ;
+; Analysis & Synthesis Status        ; Successful - Wed Apr 13 02:02:29 2022       ;
 ; Quartus Prime Version              ; 18.1.0 Build 625 09/12/2018 SJ Lite Edition ;
 ; Revision Name                      ; lab2                                        ;
 ; Top-level Entity Name              ; lab2                                        ;
 ; Family                             ; Cyclone IV E                                ;
-; Total logic elements               ; 346                                         ;
-;     Total combinational functions  ; 339                                         ;
-;     Dedicated logic registers      ; 171                                         ;
-; Total registers                    ; 171                                         ;
-; Total pins                         ; 47                                          ;
+; Total logic elements               ; 332                                         ;
+;     Total combinational functions  ; 314                                         ;
+;     Dedicated logic registers      ; 182                                         ;
+; Total registers                    ; 182                                         ;
+; Total pins                         ; 18                                          ;
 ; Total virtual pins                 ; 0                                           ;
 ; Total memory bits                  ; 0                                           ;
 ; Embedded Multiplier 9-bit elements ; 0                                           ;
@@ -181,36 +183,36 @@ refer to the applicable agreement for further details.
 +----------------------------------+-----------------+------------------------+----------------------------------------------------------+---------+
 
 
-+--------------------------------------------------------------+
-; Analysis & Synthesis Resource Usage Summary                  ;
-+---------------------------------------------+----------------+
-; Resource                                    ; Usage          ;
-+---------------------------------------------+----------------+
-; Estimated Total logic elements              ; 346            ;
-;                                             ;                ;
-; Total combinational functions               ; 339            ;
-; Logic element usage by number of LUT inputs ;                ;
-;     -- 4 input functions                    ; 151            ;
-;     -- 3 input functions                    ; 36             ;
-;     -- <=2 input functions                  ; 152            ;
-;                                             ;                ;
-; Logic elements by mode                      ;                ;
-;     -- normal mode                          ; 227            ;
-;     -- arithmetic mode                      ; 112            ;
-;                                             ;                ;
-; Total registers                             ; 171            ;
-;     -- Dedicated logic registers            ; 171            ;
-;     -- I/O registers                        ; 0              ;
-;                                             ;                ;
-; I/O pins                                    ; 47             ;
-;                                             ;                ;
-; Embedded Multiplier 9-bit elements          ; 0              ;
-;                                             ;                ;
-; Maximum fan-out node                        ; CLOCK_50~input ;
-; Maximum fan-out                             ; 171            ;
-; Total fan-out                               ; 1777           ;
-; Average fan-out                             ; 2.94           ;
-+---------------------------------------------+----------------+
++------------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary                ;
++---------------------------------------------+--------------+
+; Resource                                    ; Usage        ;
++---------------------------------------------+--------------+
+; Estimated Total logic elements              ; 332          ;
+;                                             ;              ;
+; Total combinational functions               ; 314          ;
+; Logic element usage by number of LUT inputs ;              ;
+;     -- 4 input functions                    ; 134          ;
+;     -- 3 input functions                    ; 28           ;
+;     -- <=2 input functions                  ; 152          ;
+;                                             ;              ;
+; Logic elements by mode                      ;              ;
+;     -- normal mode                          ; 202          ;
+;     -- arithmetic mode                      ; 112          ;
+;                                             ;              ;
+; Total registers                             ; 182          ;
+;     -- Dedicated logic registers            ; 182          ;
+;     -- I/O registers                        ; 0            ;
+;                                             ;              ;
+; I/O pins                                    ; 18           ;
+;                                             ;              ;
+; Embedded Multiplier 9-bit elements          ; 0            ;
+;                                             ;              ;
+; Maximum fan-out node                        ; KEY[3]~input ;
+; Maximum fan-out                             ; 183          ;
+; Total fan-out                               ; 1667         ;
+; Average fan-out                             ; 3.13         ;
++---------------------------------------------+--------------+
 
 
 +-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -218,30 +220,73 @@ refer to the applicable agreement for further details.
 +----------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+----------------------+-------------+--------------+
 ; Compilation Hierarchy Node ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name  ; Entity Name ; Library Name ;
 +----------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+----------------------+-------------+--------------+
-; |lab2                      ; 339 (4)             ; 171 (0)                   ; 0           ; 0            ; 0       ; 0         ; 47   ; 0            ; |lab2                ; lab2        ; work         ;
-;    |counter:c|             ; 64 (64)             ; 24 (24)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |lab2|counter:c      ; counter     ; work         ;
+; |lab2                      ; 314 (4)             ; 182 (0)                   ; 0           ; 0            ; 0       ; 0         ; 18   ; 0            ; |lab2                ; lab2        ; work         ;
+;    |counter:c|             ; 63 (63)             ; 24 (24)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |lab2|counter:c      ; counter     ; work         ;
 ;    |debounce:d1|           ; 28 (28)             ; 20 (20)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |lab2|debounce:d1    ; debounce    ; work         ;
 ;    |debounce:d2|           ; 28 (28)             ; 20 (20)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |lab2|debounce:d2    ; debounce    ; work         ;
 ;    |debounce:d3|           ; 28 (28)             ; 20 (20)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |lab2|debounce:d3    ; debounce    ; work         ;
-;    |edge_detect:e1|        ; 2 (2)               ; 2 (2)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |lab2|edge_detect:e1 ; edge_detect ; work         ;
-;    |edge_detect:e2|        ; 2 (2)               ; 2 (2)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |lab2|edge_detect:e2 ; edge_detect ; work         ;
-;    |edge_detect:e3|        ; 2 (2)               ; 2 (2)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |lab2|edge_detect:e3 ; edge_detect ; work         ;
-;    |lcm_ctrl:ctrl|         ; 137 (137)           ; 55 (55)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |lab2|lcm_ctrl:ctrl  ; lcm_ctrl    ; work         ;
-;    |mod_1sec:u1|           ; 44 (44)             ; 26 (26)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |lab2|mod_1sec:u1    ; mod_1sec    ; work         ;
+;    |edge_detect:e1|        ; 0 (0)               ; 2 (2)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |lab2|edge_detect:e1 ; edge_detect ; work         ;
+;    |edge_detect:e2|        ; 1 (1)               ; 2 (2)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |lab2|edge_detect:e2 ; edge_detect ; work         ;
+;    |edge_detect:e3|        ; 1 (1)               ; 2 (2)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |lab2|edge_detect:e3 ; edge_detect ; work         ;
+;    |lcm_ctrl:ctrl|         ; 113 (113)           ; 66 (66)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |lab2|lcm_ctrl:ctrl  ; lcm_ctrl    ; work         ;
+;    |mod_1sec:u1|           ; 48 (48)             ; 26 (26)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |lab2|mod_1sec:u1    ; mod_1sec    ; work         ;
 +----------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+----------------------+-------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
 
-+---------------------------------------------------------------------------------+
-; Registers Removed During Synthesis                                              ;
-+---------------------------------------+-----------------------------------------+
-; Register name                         ; Reason for Removal                      ;
-+---------------------------------------+-----------------------------------------+
-; lcm_ctrl:ctrl|digit_send[5]           ; Merged with lcm_ctrl:ctrl|digit_send[4] ;
-; lcm_ctrl:ctrl|digit_send[7]           ; Merged with lcm_ctrl:ctrl|digit_send[6] ;
-; counter:c|sec_h[3]                    ; Stuck at GND due to stuck port data_in  ;
-; Total Number of Removed Registers = 3 ;                                         ;
-+---------------------------------------+-----------------------------------------+
+Encoding Type:  One-Hot
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |lab2|lcm_ctrl:ctrl|state                                                                                                                            ;
++---------------------+---------------------+-------------------+--------------------+-----------------+------------+-------------------+------------------+-----------+
+; Name                ; state.display_clear ; state.display_off ; state.function_set ; state.send_data ; state.idle ; state.ntust_clock ; state.entry_mode ; state.000 ;
++---------------------+---------------------+-------------------+--------------------+-----------------+------------+-------------------+------------------+-----------+
+; state.000           ; 0                   ; 0                 ; 0                  ; 0               ; 0          ; 0                 ; 0                ; 0         ;
+; state.entry_mode    ; 0                   ; 0                 ; 0                  ; 0               ; 0          ; 0                 ; 1                ; 1         ;
+; state.ntust_clock   ; 0                   ; 0                 ; 0                  ; 0               ; 0          ; 1                 ; 0                ; 1         ;
+; state.idle          ; 0                   ; 0                 ; 0                  ; 0               ; 1          ; 0                 ; 0                ; 1         ;
+; state.send_data     ; 0                   ; 0                 ; 0                  ; 1               ; 0          ; 0                 ; 0                ; 1         ;
+; state.function_set  ; 0                   ; 0                 ; 1                  ; 0               ; 0          ; 0                 ; 0                ; 1         ;
+; state.display_off   ; 0                   ; 1                 ; 0                  ; 0               ; 0          ; 0                 ; 0                ; 1         ;
+; state.display_clear ; 1                   ; 0                 ; 0                  ; 0               ; 0          ; 0                 ; 0                ; 1         ;
++---------------------+---------------------+-------------------+--------------------+-----------------+------------+-------------------+------------------+-----------+
+
+
+Encoding Type:  One-Hot
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |lab2|lcm_ctrl:ctrl|digit_state                                                                                                                                                                                    ;
++----------------------+----------------------+-------------------+-------------------+----------------------+-------------------+-------------------+----------------------+------------------+------------------+------------------+
+; Name                 ; digit_state.fin_send ; digit_state.sec_L ; digit_state.sec_H ; digit_state.dotdot_L ; digit_state.min_L ; digit_state.min_H ; digit_state.dotdot_H ; digit_state.hr_L ; digit_state.hr_H ; digit_state.0000 ;
++----------------------+----------------------+-------------------+-------------------+----------------------+-------------------+-------------------+----------------------+------------------+------------------+------------------+
+; digit_state.0000     ; 0                    ; 0                 ; 0                 ; 0                    ; 0                 ; 0                 ; 0                    ; 0                ; 0                ; 0                ;
+; digit_state.hr_H     ; 0                    ; 0                 ; 0                 ; 0                    ; 0                 ; 0                 ; 0                    ; 0                ; 1                ; 1                ;
+; digit_state.hr_L     ; 0                    ; 0                 ; 0                 ; 0                    ; 0                 ; 0                 ; 0                    ; 1                ; 0                ; 1                ;
+; digit_state.dotdot_H ; 0                    ; 0                 ; 0                 ; 0                    ; 0                 ; 0                 ; 1                    ; 0                ; 0                ; 1                ;
+; digit_state.min_H    ; 0                    ; 0                 ; 0                 ; 0                    ; 0                 ; 1                 ; 0                    ; 0                ; 0                ; 1                ;
+; digit_state.min_L    ; 0                    ; 0                 ; 0                 ; 0                    ; 1                 ; 0                 ; 0                    ; 0                ; 0                ; 1                ;
+; digit_state.dotdot_L ; 0                    ; 0                 ; 0                 ; 1                    ; 0                 ; 0                 ; 0                    ; 0                ; 0                ; 1                ;
+; digit_state.sec_H    ; 0                    ; 0                 ; 1                 ; 0                    ; 0                 ; 0                 ; 0                    ; 0                ; 0                ; 1                ;
+; digit_state.sec_L    ; 0                    ; 1                 ; 0                 ; 0                    ; 0                 ; 0                 ; 0                    ; 0                ; 0                ; 1                ;
+; digit_state.fin_send ; 1                    ; 0                 ; 0                 ; 0                    ; 0                 ; 0                 ; 0                    ; 0                ; 0                ; 1                ;
++----------------------+----------------------+-------------------+-------------------+----------------------+-------------------+-------------------+----------------------+------------------+------------------+------------------+
+
+
++----------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                               ;
++----------------------------------------+-----------------------------------------+
+; Register name                          ; Reason for Removal                      ;
++----------------------------------------+-----------------------------------------+
+; lcm_ctrl:ctrl|digit_send[5]            ; Merged with lcm_ctrl:ctrl|digit_send[4] ;
+; lcm_ctrl:ctrl|digit_send[7]            ; Merged with lcm_ctrl:ctrl|digit_send[6] ;
+; lcm_ctrl:ctrl|state~4                  ; Lost fanout                             ;
+; lcm_ctrl:ctrl|state~5                  ; Lost fanout                             ;
+; lcm_ctrl:ctrl|state~6                  ; Lost fanout                             ;
+; lcm_ctrl:ctrl|digit_state~14           ; Lost fanout                             ;
+; lcm_ctrl:ctrl|digit_state~15           ; Lost fanout                             ;
+; lcm_ctrl:ctrl|digit_state~16           ; Lost fanout                             ;
+; lcm_ctrl:ctrl|digit_state~17           ; Lost fanout                             ;
+; counter:c|sec_h[3]                     ; Stuck at GND due to stuck port data_in  ;
+; Total Number of Removed Registers = 10 ;                                         ;
++----------------------------------------+-----------------------------------------+
 
 
 +------------------------------------------------------+
@@ -249,12 +294,12 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 171   ;
-; Number of registers using Synchronous Clear  ; 13    ;
-; Number of registers using Synchronous Load   ; 61    ;
-; Number of registers using Asynchronous Clear ; 170   ;
+; Total registers                              ; 182   ;
+; Number of registers using Synchronous Clear  ; 12    ;
+; Number of registers using Synchronous Load   ; 60    ;
+; Number of registers using Asynchronous Clear ; 181   ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 42    ;
+; Number of registers using Clock Enable       ; 50    ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
@@ -264,21 +309,20 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output          ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------+
-; 3:1                ; 12 bits   ; 24 LEs        ; 12 LEs               ; 12 LEs                 ; Yes        ; |lab2|lcm_ctrl:ctrl|send_counter[1] ;
-; 3:1                ; 20 bits   ; 40 LEs        ; 40 LEs               ; 0 LEs                  ; Yes        ; |lab2|debounce:d1|counter[3]        ;
-; 3:1                ; 20 bits   ; 40 LEs        ; 40 LEs               ; 0 LEs                  ; Yes        ; |lab2|debounce:d2|counter[16]       ;
-; 3:1                ; 20 bits   ; 40 LEs        ; 40 LEs               ; 0 LEs                  ; Yes        ; |lab2|debounce:d3|counter[12]       ;
-; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |lab2|counter:c|hr_h[1]             ;
+; 3:1                ; 12 bits   ; 24 LEs        ; 12 LEs               ; 12 LEs                 ; Yes        ; |lab2|lcm_ctrl:ctrl|send_counter[9] ;
+; 3:1                ; 20 bits   ; 40 LEs        ; 40 LEs               ; 0 LEs                  ; Yes        ; |lab2|debounce:d1|counter[4]        ;
+; 3:1                ; 20 bits   ; 40 LEs        ; 40 LEs               ; 0 LEs                  ; Yes        ; |lab2|debounce:d2|counter[13]       ;
+; 3:1                ; 20 bits   ; 40 LEs        ; 40 LEs               ; 0 LEs                  ; Yes        ; |lab2|debounce:d3|counter[17]       ;
+; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |lab2|counter:c|hr_h[2]             ;
 ; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |lab2|counter:c|sec_h[0]            ;
-; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |lab2|counter:c|min_h[3]            ;
-; 4:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |lab2|counter:c|hr_l[0]             ;
-; 4:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |lab2|counter:c|sec_l[0]            ;
+; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |lab2|counter:c|min_h[2]            ;
+; 4:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |lab2|counter:c|hr_l[1]             ;
+; 4:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |lab2|counter:c|sec_l[2]            ;
 ; 4:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |lab2|counter:c|min_l[0]            ;
-; 16:1               ; 2 bits    ; 20 LEs        ; 6 LEs                ; 14 LEs                 ; Yes        ; |lab2|lcm_ctrl:ctrl|digit_send[4]   ;
-; 16:1               ; 4 bits    ; 40 LEs        ; 20 LEs               ; 20 LEs                 ; Yes        ; |lab2|lcm_ctrl:ctrl|digit_send[3]   ;
-; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |lab2|lcm_ctrl:ctrl|Mux18           ;
-; 4:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; No         ; |lab2|lcm_ctrl:ctrl|Mux17           ;
-; 8:1                ; 5 bits    ; 25 LEs        ; 25 LEs               ; 0 LEs                  ; No         ; |lab2|lcm_ctrl:ctrl|Mux20           ;
+; 8:1                ; 2 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; Yes        ; |lab2|lcm_ctrl:ctrl|digit_send[0]   ;
+; 9:1                ; 2 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |lab2|lcm_ctrl:ctrl|digit_send[3]   ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; No         ; |lab2|lcm_ctrl:ctrl|digit_state     ;
+; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |lab2|lcm_ctrl:ctrl|Selector30      ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------+
 
 
@@ -287,8 +331,8 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------+-------+-------------------------------+
 ; Parameter Name ; Value ; Type                          ;
 +----------------+-------+-------------------------------+
-; run            ; 0     ; Signed Integer                ;
-; stop           ; 1     ; Signed Integer                ;
+; run            ; 0     ; Unsigned Binary               ;
+; stop           ; 1     ; Unsigned Binary               ;
 +----------------+-------+-------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
@@ -338,28 +382,26 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-----------------------+-----------------------------+
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
-; boundary_port         ; 47                          ;
-; cycloneiii_ff         ; 171                         ;
-;     CLR               ; 56                          ;
+; boundary_port         ; 18                          ;
+; cycloneiii_ff         ; 182                         ;
+;     CLR               ; 59                          ;
 ;     CLR SCLR          ; 12                          ;
 ;     CLR SLD           ; 60                          ;
-;     ENA CLR           ; 40                          ;
-;     ENA CLR SCLR      ; 1                           ;
-;     ENA CLR SLD       ; 1                           ;
+;     ENA CLR           ; 50                          ;
 ;     plain             ; 1                           ;
-; cycloneiii_lcell_comb ; 341                         ;
+; cycloneiii_lcell_comb ; 315                         ;
 ;     arith             ; 112                         ;
 ;         2 data inputs ; 111                         ;
 ;         3 data inputs ; 1                           ;
-;     normal            ; 229                         ;
+;     normal            ; 203                         ;
 ;         0 data inputs ; 2                           ;
-;         1 data inputs ; 12                          ;
-;         2 data inputs ; 29                          ;
-;         3 data inputs ; 35                          ;
-;         4 data inputs ; 151                         ;
+;         1 data inputs ; 10                          ;
+;         2 data inputs ; 30                          ;
+;         3 data inputs ; 27                          ;
+;         4 data inputs ; 134                         ;
 ;                       ;                             ;
 ; Max LUT depth         ; 6.00                        ;
-; Average LUT depth     ; 3.40                        ;
+; Average LUT depth     ; 3.19                        ;
 +-----------------------+-----------------------------+
 
 
@@ -378,7 +420,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
-    Info: Processing started: Wed Apr 13 00:27:02 2022
+    Info: Processing started: Wed Apr 13 02:02:18 2022
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off lab2 -c lab2
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 16 of the 16 processors detected
@@ -394,53 +436,33 @@ Info (12021): Found 1 design units, including 1 entities, in source file debounc
     Info (12023): Found entity 1: debounce File: D:/Digital_Logic_Design/Pratice/Homework 2/debounce.v Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file counter.v
     Info (12023): Found entity 1: counter File: D:/Digital_Logic_Design/Pratice/Homework 2/counter.v Line: 1
-Warning (10229): Verilog HDL Expression warning at lcm_ctrl.v(153): truncated literal to match 8 bits File: D:/Digital_Logic_Design/Pratice/Homework 2/lcm_ctrl.v Line: 153
+Warning (10229): Verilog HDL Expression warning at lcm_ctrl.v(149): truncated literal to match 8 bits File: D:/Digital_Logic_Design/Pratice/Homework 2/lcm_ctrl.v Line: 149
 Info (12021): Found 1 design units, including 1 entities, in source file lcm_ctrl.v
     Info (12023): Found entity 1: lcm_ctrl File: D:/Digital_Logic_Design/Pratice/Homework 2/lcm_ctrl.v Line: 1
 Info (12127): Elaborating entity "lab2" for the top level hierarchy
-Info (12128): Elaborating entity "mod_1sec" for hierarchy "mod_1sec:u1" File: D:/Digital_Logic_Design/Pratice/Homework 2/lab2.v Line: 30
-Info (12128): Elaborating entity "debounce" for hierarchy "debounce:d1" File: D:/Digital_Logic_Design/Pratice/Homework 2/lab2.v Line: 39
-Info (12128): Elaborating entity "edge_detect" for hierarchy "edge_detect:e1" File: D:/Digital_Logic_Design/Pratice/Homework 2/lab2.v Line: 46
-Info (12128): Elaborating entity "counter" for hierarchy "counter:c" File: D:/Digital_Logic_Design/Pratice/Homework 2/lab2.v Line: 109
-Warning (10230): Verilog HDL assignment warning at counter.v(41): truncated value with size 32 to match size of target (1) File: D:/Digital_Logic_Design/Pratice/Homework 2/counter.v Line: 41
-Warning (10230): Verilog HDL assignment warning at counter.v(42): truncated value with size 32 to match size of target (1) File: D:/Digital_Logic_Design/Pratice/Homework 2/counter.v Line: 42
-Info (12128): Elaborating entity "lcm_ctrl" for hierarchy "lcm_ctrl:ctrl" File: D:/Digital_Logic_Design/Pratice/Homework 2/lab2.v Line: 148
-Warning (10230): Verilog HDL assignment warning at lcm_ctrl.v(127): truncated value with size 32 to match size of target (4) File: D:/Digital_Logic_Design/Pratice/Homework 2/lcm_ctrl.v Line: 127
-Warning (10230): Verilog HDL assignment warning at lcm_ctrl.v(129): truncated value with size 32 to match size of target (4) File: D:/Digital_Logic_Design/Pratice/Homework 2/lcm_ctrl.v Line: 129
-Warning (10230): Verilog HDL assignment warning at lcm_ctrl.v(130): truncated value with size 32 to match size of target (4) File: D:/Digital_Logic_Design/Pratice/Homework 2/lcm_ctrl.v Line: 130
-Warning (10230): Verilog HDL assignment warning at lcm_ctrl.v(132): truncated value with size 32 to match size of target (4) File: D:/Digital_Logic_Design/Pratice/Homework 2/lcm_ctrl.v Line: 132
-Warning (10230): Verilog HDL assignment warning at lcm_ctrl.v(134): truncated value with size 32 to match size of target (4) File: D:/Digital_Logic_Design/Pratice/Homework 2/lcm_ctrl.v Line: 134
-Warning (10230): Verilog HDL assignment warning at lcm_ctrl.v(135): truncated value with size 32 to match size of target (4) File: D:/Digital_Logic_Design/Pratice/Homework 2/lcm_ctrl.v Line: 135
-Warning (10230): Verilog HDL assignment warning at lcm_ctrl.v(137): truncated value with size 32 to match size of target (4) File: D:/Digital_Logic_Design/Pratice/Homework 2/lcm_ctrl.v Line: 137
-Warning (10230): Verilog HDL assignment warning at lcm_ctrl.v(139): truncated value with size 32 to match size of target (4) File: D:/Digital_Logic_Design/Pratice/Homework 2/lcm_ctrl.v Line: 139
-Warning (10230): Verilog HDL assignment warning at lcm_ctrl.v(140): truncated value with size 32 to match size of target (4) File: D:/Digital_Logic_Design/Pratice/Homework 2/lcm_ctrl.v Line: 140
-Warning (10230): Verilog HDL assignment warning at lcm_ctrl.v(142): truncated value with size 32 to match size of target (4) File: D:/Digital_Logic_Design/Pratice/Homework 2/lcm_ctrl.v Line: 142
-Warning (10230): Verilog HDL assignment warning at lcm_ctrl.v(144): truncated value with size 32 to match size of target (4) File: D:/Digital_Logic_Design/Pratice/Homework 2/lcm_ctrl.v Line: 144
-Warning (10230): Verilog HDL assignment warning at lcm_ctrl.v(188): truncated value with size 32 to match size of target (3) File: D:/Digital_Logic_Design/Pratice/Homework 2/lcm_ctrl.v Line: 188
-Warning (10230): Verilog HDL assignment warning at lcm_ctrl.v(189): truncated value with size 32 to match size of target (3) File: D:/Digital_Logic_Design/Pratice/Homework 2/lcm_ctrl.v Line: 189
-Warning (10230): Verilog HDL assignment warning at lcm_ctrl.v(190): truncated value with size 32 to match size of target (3) File: D:/Digital_Logic_Design/Pratice/Homework 2/lcm_ctrl.v Line: 190
-Warning (10230): Verilog HDL assignment warning at lcm_ctrl.v(191): truncated value with size 32 to match size of target (3) File: D:/Digital_Logic_Design/Pratice/Homework 2/lcm_ctrl.v Line: 191
-Warning (10230): Verilog HDL assignment warning at lcm_ctrl.v(192): truncated value with size 32 to match size of target (3) File: D:/Digital_Logic_Design/Pratice/Homework 2/lcm_ctrl.v Line: 192
-Warning (10230): Verilog HDL assignment warning at lcm_ctrl.v(193): truncated value with size 32 to match size of target (3) File: D:/Digital_Logic_Design/Pratice/Homework 2/lcm_ctrl.v Line: 193
-Warning (10230): Verilog HDL assignment warning at lcm_ctrl.v(194): truncated value with size 32 to match size of target (3) File: D:/Digital_Logic_Design/Pratice/Homework 2/lcm_ctrl.v Line: 194
-Warning (10230): Verilog HDL assignment warning at lcm_ctrl.v(195): truncated value with size 32 to match size of target (3) File: D:/Digital_Logic_Design/Pratice/Homework 2/lcm_ctrl.v Line: 195
-Warning (10230): Verilog HDL assignment warning at lcm_ctrl.v(197): truncated value with size 32 to match size of target (3) File: D:/Digital_Logic_Design/Pratice/Homework 2/lcm_ctrl.v Line: 197
+Info (12128): Elaborating entity "mod_1sec" for hierarchy "mod_1sec:u1" File: D:/Digital_Logic_Design/Pratice/Homework 2/lab2.v Line: 23
+Info (12128): Elaborating entity "debounce" for hierarchy "debounce:d1" File: D:/Digital_Logic_Design/Pratice/Homework 2/lab2.v Line: 32
+Info (12128): Elaborating entity "edge_detect" for hierarchy "edge_detect:e1" File: D:/Digital_Logic_Design/Pratice/Homework 2/lab2.v Line: 39
+Info (12128): Elaborating entity "counter" for hierarchy "counter:c" File: D:/Digital_Logic_Design/Pratice/Homework 2/lab2.v Line: 99
+Info (12128): Elaborating entity "lcm_ctrl" for hierarchy "lcm_ctrl:ctrl" File: D:/Digital_Logic_Design/Pratice/Homework 2/lab2.v Line: 129
+Info (10264): Verilog HDL Case Statement information at lcm_ctrl.v(148): all case item expressions in this case statement are onehot File: D:/Digital_Logic_Design/Pratice/Homework 2/lcm_ctrl.v Line: 148
 Warning (13024): Output pins are stuck at VCC or GND
     Warning (13410): Pin "LCD_RW" is stuck at GND File: D:/Digital_Logic_Design/Pratice/Homework 2/lab2.v Line: 10
     Warning (13410): Pin "LCD_ON" is stuck at VCC File: D:/Digital_Logic_Design/Pratice/Homework 2/lab2.v Line: 12
-    Warning (13410): Pin "LCD_BLON" is stuck at GND File: D:/Digital_Logic_Design/Pratice/Homework 2/lab2.v Line: 13
+    Warning (13410): Pin "LCD_BLON" is stuck at GND File: D:/Digital_Logic_Design/Pratice/Homework 2/lab2.v Line: 15
 Info (286030): Timing-Driven Synthesis is running
+Info (17049): 7 registers lost all their fanouts during netlist optimizations.
 Info (144001): Generated suppressed messages file D:/Digital_Logic_Design/Pratice/Homework 2/output_files/lab2.map.smsg
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 403 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 353 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 5 input pins
-    Info (21059): Implemented 42 output pins
-    Info (21061): Implemented 356 logic cells
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 28 warnings
-    Info: Peak virtual memory: 4839 megabytes
-    Info: Processing ended: Wed Apr 13 00:27:12 2022
-    Info: Elapsed time: 00:00:10
+    Info (21059): Implemented 13 output pins
+    Info (21061): Implemented 335 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 6 warnings
+    Info: Peak virtual memory: 4842 megabytes
+    Info: Processing ended: Wed Apr 13 02:02:29 2022
+    Info: Elapsed time: 00:00:11
     Info: Total CPU time (on all processors): 00:00:23
 
 
